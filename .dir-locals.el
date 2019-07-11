@@ -1,16 +1,15 @@
 ;; THIS WORKS
 ;; ((nil . ((cmake-ide-build-dir . "/home/sov/CS/AlgoDS/skiplist"))))
 
-;; now attempting to set up init configure
 ((nil . ((eval . (setq
                   ;; projectile-project-test-cmd #'helm-ctest
                   projectile-project-compilation-cmd #'helm-make-projectile
-                  ;; projectile-project-compilation-dir "/home/ken/CS/AlgoDS/skiplist/build"
                   projectile-project-compilation-dir "build"
                   helm-make-build-dir (projectile-compilation-dir)
                   ;; helm-ctest-dir (projectile-compilation-dir)
                   ))
-         (cmake-ide-build-dir . "/home/sov/CS/AlgoDS/skiplist/build")
+         ;; (cmake-ide-build-dir . "/home/sov/CS/AlgoDS/skiplist/build")
+         (cmake-ide-build-dir . "build")
          ;; (cmake-ide-build-dir . "")
          (projectile-project-name . "skiplist")
          (projectile-project-run-cmd . "./run.sh") ;; not working

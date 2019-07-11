@@ -1,0 +1,109 @@
+;; -*- mode: lisp-interaction-mode -*-
+
+major-mode
+; lisp-interaction-mode
+
+;; https://www.emacswiki.org/emacs/ListStructure
+;; https://www.emacswiki.org/emacs/ListModification
+;; https://www.emacswiki.org/emacs/ElispCookbook
+
+(setq myDir "/home/ken/cs/vector/build")
+; "/home/ken/cs/vector/build"
+
+(split-string myDir "/")
+; ("" "home" "ken" "cs" "vector" "build")
+
+(setq list1 '(a b c))
+; (a b c)
+
+(cdr list1)
+; (b c)
+
+
+(setq listDir (split-string myDir "/"))
+; ("" "home" "ken" "cs" "vector" "build")
+
+(last listDir)
+; ("build")
+
+(setq proj (last listDir))
+; ("build")
+
+proj
+; ("build")
+
+(length listDir)
+; 6
+
+(nth 1 listDir)
+; "home"
+
+(nth 5 listDir)
+; "build"
+
+(setq dirLength (length listDir))
+; 6
+
+(- 1 dirLength)
+; -5
+
+(- dirLength 1)
+; 5
+
+dirLength
+; 6
+
+(setq dirCount (- dirLength 1))
+; 5
+
+dirCount
+; 5
+
+dirLength
+; 6
+
+
+listDir
+; ("" "home" "ken" "cs" "vector" "build")
+
+
+(setq myProjectNameList listDir)
+; ("" "home" "ken" "cs" "vector" "build")
+
+
+myProjectNameList
+; ("" "home" "ken" "cs" "vector" "build")
+
+
+(setq myProjectNameList (delete (nth dirCount myProjectNameList) myProjectNameList))
+; ("" "home" "ken" "cs" "vector")
+
+myProjectNameList
+; ("" "home" "ken" "cs" "vector")
+
+(setq myProjectNameList (delete (nth 0 myProjectNameList) myProjectNameList))
+; ("home" "ken" "cs" "vector")
+
+myProjectNameList
+; ("home" "ken" "cs" "vector")
+
+(setq myProjectNameList (delete (nth 0 myProjectNameList) myProjectNameList))
+; ("ken" "cs" "vector")
+
+myProjectNameList
+; ("ken" "cs" "vector")
+
+(setq myProjectNameList (delete (nth 0 myProjectNameList) myProjectNameList))
+; ("cs" "vector")
+
+myProjectNameList
+; ("cs" "vector")
+
+(string-join myProjectNameList "_")
+; "cs_vector"
+
+(setq myProjectName (string-join myProjectNameList "_"))
+; "cs_vector"
+
+myProjectName
+; "cs_vector"

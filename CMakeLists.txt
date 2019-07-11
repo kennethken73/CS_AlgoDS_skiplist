@@ -1,35 +1,53 @@
 cmake_minimum_required(VERSION 3.10)
 
-# create myProjectName
+# -- create my variables --
+# --    myProjectName
+# --    myProjDir
+# --    myPWD
+
+# the build dir is entered when running cmake,
+# therefore, myPWD is /home/..../build
 set(myPWD $ENV{PWD})
-message("${myPWD}")
-string(SUBSTRING $ENV{PWD} 10 -1 myProjectName)
+message("my build directory is -> ${myPWD}")
+
+# strip /build
+set(myProjDir ${myPWD})
 string(REPLACE "/build" ""
-  myProjectName
-  ${myProjectName})
+  myProjDir
+  ${myProjDir})
+message("my sources and includes are in -> ${myProjDir}")
+
+# strip preceeding /home/ME/
+string(SUBSTRING "${myProjDir}" 10 -1 myProjectName)
+# change all "/" to "_"
 string(REPLACE "/" "_"
   myProjectName
   ${myProjectName})
+message("this project is named -> ${myProjectName}")
 
-message("${myProjectName}")
+
 
 set(CMAKE_BUILD_TYPE Debug)
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_compile_options(-Wall -Wextra -Wpedantic -g)
 
-project(${myProjectName})
+project("${myProjectName}")
+
 # cmake will parse these files as the build system
-set(PROJECT_SOURCE_DIR "/home/sov/CS/AlgoDS/skiplist")
+# set(PROJECT_SOURCE_DIR "/home/sov/CS/AlgoDS/skiplist")
+set(PROJECT_SOURCE_DIR "${myProjDir}")
+
 # cmake will output its build system here
-set(PROJECT_BINARY_DIR "/home/sov/CS/AlgoDS/skiplist/build")
-# set(PROJECT_BINARY_DIR "/home/sov/CS/AlgoDS/skiplist")
+# set(PROJECT_BINARY_DIR "/home/sov/CS/AlgoDS/skiplist/build")
+set(PROJECT_BINARY_DIR "${myPWD}")
 
 # my own structure variables
-set(Proj_Top_Dir "/home/sov/CS/AlgoDS/skiplist")
-set(Sources_Directory "${Proj_Top_Dir}")
-set(Include_Directory "${Proj_Top_Dir}")
+# set(Proj_Top_Dir "/home/sov/CS/AlgoDS/skiplist")
+# set(Sources_Directory "${Proj_Top_Dir}")
+# set(Include_Directory "${Proj_Top_Dir}")
+set(Sources_Directory "${myProjDir}")
+set(Include_Directory "${myProjDir}")
 
 # I'm expecting these to be placed in ${PROJECT_BINARY_DIR}
 add_executable(g++Exe "")
