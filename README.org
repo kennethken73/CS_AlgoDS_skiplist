@@ -1,0 +1,23 @@
+* Project Description
+This is a study of the <skiplist> Data Structure.
+This is a =LiterateProgramming= 'orgumentary'.
+
+* c++ build <Remarks>
+So, this is a flat-file working version of the basic setup which produces a .clang-complete and a
+compile-commands.json. To get this, run firstCmake.sh in the terminal before opening the project
+in spacemacs.
+
+In .dir-locals.el:
+#+BEGIN_SRC lisp
+(projectile-project-configure-cmd . "CXX='cc_args.py g++' cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=Yes -DCMAKE_BUILD_TYPE=DEBUG . && make")
+#+END_SRC
+..does not seem to be working yet
+Or does it get set too late?
+
+Either way, I will now work to create out-of-tree builds on a different branch "ootb".
+
+Ok, build dir is operational. Now I need to make sure flycheck is happy.
+
+
+* Bookmarks
+https://github.com/kennethken73/AlgoDS_skiplist
